@@ -7,18 +7,76 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		23A6317F2B1F9BEB00BDF56E /* StickerStudioAISwiftUITestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A6317E2B1F9BEB00BDF56E /* StickerStudioAISwiftUITestApp.swift */; };
-		23A631812B1F9BEB00BDF56E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A631802B1F9BEB00BDF56E /* ContentView.swift */; };
 		23A631832B1F9BEC00BDF56E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23A631822B1F9BEC00BDF56E /* Assets.xcassets */; };
 		23A631862B1F9BEC00BDF56E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23A631852B1F9BEC00BDF56E /* Preview Assets.xcassets */; };
+		9F55F7362B2251F500CCA44F /* Color+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F7172B2251F500CCA44F /* Color+hex.swift */; };
+		9F55F7372B2251F500CCA44F /* View+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F7182B2251F500CCA44F /* View+Keyboard.swift */; };
+		9F55F7382B2251F500CCA44F /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F71A2B2251F500CCA44F /* CustomColors.swift */; };
+		9F55F7392B2251F500CCA44F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F71C2B2251F500CCA44F /* NetworkManager.swift */; };
+		9F55F73A2B2251F500CCA44F /* TextToImageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F71F2B2251F500CCA44F /* TextToImageResponse.swift */; };
+		9F55F73B2B2251F500CCA44F /* FetchImageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F7202B2251F500CCA44F /* FetchImageResponse.swift */; };
+		9F55F73C2B2251F500CCA44F /* PromptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F7212B2251F500CCA44F /* PromptModel.swift */; };
+		9F55F73D2B2251F500CCA44F /* FetchImageRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F7232B2251F500CCA44F /* FetchImageRequestModel.swift */; };
+		9F55F73E2B2251F500CCA44F /* TextToImageRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F7242B2251F500CCA44F /* TextToImageRequestModel.swift */; };
+		9F55F73F2B2251F500CCA44F /* PageIntro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F7252B2251F500CCA44F /* PageIntro.swift */; };
+		9F55F7402B2251F500CCA44F /* GeneratedStickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F7272B2251F500CCA44F /* GeneratedStickerView.swift */; };
+		9F55F7412B2251F500CCA44F /* PromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F7282B2251F500CCA44F /* PromptView.swift */; };
+		9F55F7422B2251F500CCA44F /* CastomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F7292B2251F500CCA44F /* CastomTextField.swift */; };
+		9F55F7432B2251F500CCA44F /* PromptLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F72A2B2251F500CCA44F /* PromptLayout.swift */; };
+		9F55F7442B2251F500CCA44F /* CustomIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F72B2B2251F500CCA44F /* CustomIndicatorView.swift */; };
+		9F55F7452B2251F500CCA44F /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F72C2B2251F500CCA44F /* IntroView.swift */; };
+		9F55F7462B2251F500CCA44F /* CreateStickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F7302B2251F500CCA44F /* CreateStickerViewModel.swift */; };
+		9F55F7472B2251F500CCA44F /* CreateStickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F7312B2251F500CCA44F /* CreateStickerView.swift */; };
+		9F55F7492B2251F500CCA44F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F7342B2251F500CCA44F /* LoginViewModel.swift */; };
+		9F55F74A2B2251F500CCA44F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F7352B2251F500CCA44F /* LoginView.swift */; };
+		9F55F74D2B22521400CCA44F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F74B2B22521300CCA44F /* ContentView.swift */; };
+		9F55F74E2B22521400CCA44F /* StickerStudioAISwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F74C2B22521300CCA44F /* StickerStudioAISwiftUIApp.swift */; };
+		9F55F7512B2253C700CCA44F /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 9F55F7502B2253C700CCA44F /* FirebaseAnalytics */; };
+		9F55F7532B2253C700CCA44F /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 9F55F7522B2253C700CCA44F /* FirebaseAnalyticsOnDeviceConversion */; };
+		9F55F7552B2253C700CCA44F /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9F55F7542B2253C700CCA44F /* FirebaseAnalyticsSwift */; };
+		9F55F7572B2253C700CCA44F /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 9F55F7562B2253C700CCA44F /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		9F55F7592B2253C700CCA44F /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 9F55F7582B2253C700CCA44F /* FirebaseAppCheck */; };
+		9F55F75C2B22540400CCA44F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 9F55F75B2B22540400CCA44F /* FirebaseAuth */; };
+		9F55F75F2B22541F00CCA44F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9F55F75E2B22541F00CCA44F /* Alamofire */; };
+		9F55F7622B22543D00CCA44F /* BackgroundRemoval in Frameworks */ = {isa = PBXBuildFile; productRef = 9F55F7612B22543D00CCA44F /* BackgroundRemoval */; };
+		9F55F7652B22544D00CCA44F /* TelegramStickersImport in Frameworks */ = {isa = PBXBuildFile; productRef = 9F55F7642B22544D00CCA44F /* TelegramStickersImport */; };
+		9F55F7682B22547000CCA44F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 9F55F7672B22547000CCA44F /* Kingfisher */; };
+		9F55F76A2B22553B00CCA44F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F55F7692B22553B00CCA44F /* GoogleService-Info.plist */; };
+		9F963BD42B263D6D0051AAFB /* LoginViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F963BD32B263D6D0051AAFB /* LoginViewState.swift */; };
+		9FC3BECC2B24E24100993FD3 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 9FC3BECB2B24E24100993FD3 /* FirebaseFunctions */; };
+		9FC3BECE2B24E51700993FD3 /* GetUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC3BECD2B24E51700993FD3 /* GetUserResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		23A6317B2B1F9BEB00BDF56E /* StickerStudioAISwiftUITest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StickerStudioAISwiftUITest.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		23A6317E2B1F9BEB00BDF56E /* StickerStudioAISwiftUITestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerStudioAISwiftUITestApp.swift; sourceTree = "<group>"; };
-		23A631802B1F9BEB00BDF56E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		23A631822B1F9BEC00BDF56E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		23A631852B1F9BEC00BDF56E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9F55F7172B2251F500CCA44F /* Color+hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+hex.swift"; sourceTree = "<group>"; };
+		9F55F7182B2251F500CCA44F /* View+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Keyboard.swift"; sourceTree = "<group>"; };
+		9F55F71A2B2251F500CCA44F /* CustomColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
+		9F55F71C2B2251F500CCA44F /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		9F55F71F2B2251F500CCA44F /* TextToImageResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextToImageResponse.swift; sourceTree = "<group>"; };
+		9F55F7202B2251F500CCA44F /* FetchImageResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchImageResponse.swift; sourceTree = "<group>"; };
+		9F55F7212B2251F500CCA44F /* PromptModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromptModel.swift; sourceTree = "<group>"; };
+		9F55F7232B2251F500CCA44F /* FetchImageRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchImageRequestModel.swift; sourceTree = "<group>"; };
+		9F55F7242B2251F500CCA44F /* TextToImageRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextToImageRequestModel.swift; sourceTree = "<group>"; };
+		9F55F7252B2251F500CCA44F /* PageIntro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageIntro.swift; sourceTree = "<group>"; };
+		9F55F7272B2251F500CCA44F /* GeneratedStickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedStickerView.swift; sourceTree = "<group>"; };
+		9F55F7282B2251F500CCA44F /* PromptView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromptView.swift; sourceTree = "<group>"; };
+		9F55F7292B2251F500CCA44F /* CastomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CastomTextField.swift; sourceTree = "<group>"; };
+		9F55F72A2B2251F500CCA44F /* PromptLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromptLayout.swift; sourceTree = "<group>"; };
+		9F55F72B2B2251F500CCA44F /* CustomIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomIndicatorView.swift; sourceTree = "<group>"; };
+		9F55F72C2B2251F500CCA44F /* IntroView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
+		9F55F7302B2251F500CCA44F /* CreateStickerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateStickerViewModel.swift; sourceTree = "<group>"; };
+		9F55F7312B2251F500CCA44F /* CreateStickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateStickerView.swift; sourceTree = "<group>"; };
+		9F55F7342B2251F500CCA44F /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		9F55F7352B2251F500CCA44F /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		9F55F74B2B22521300CCA44F /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9F55F74C2B22521300CCA44F /* StickerStudioAISwiftUIApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StickerStudioAISwiftUIApp.swift; sourceTree = "<group>"; };
+		9F55F7692B22553B00CCA44F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9F963BD32B263D6D0051AAFB /* LoginViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewState.swift; sourceTree = "<group>"; };
+		9FC3BECD2B24E51700993FD3 /* GetUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserResponse.swift; sourceTree = "<group>"; };
+		9FFB1D122B1FA5FF008C1A47 /* StickerStudioAISwiftUITest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StickerStudioAISwiftUITest.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +84,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F55F7552B2253C700CCA44F /* FirebaseAnalyticsSwift in Frameworks */,
+				9F55F7652B22544D00CCA44F /* TelegramStickersImport in Frameworks */,
+				9F55F75F2B22541F00CCA44F /* Alamofire in Frameworks */,
+				9F55F75C2B22540400CCA44F /* FirebaseAuth in Frameworks */,
+				9F55F7682B22547000CCA44F /* Kingfisher in Frameworks */,
+				9F55F7512B2253C700CCA44F /* FirebaseAnalytics in Frameworks */,
+				9F55F7532B2253C700CCA44F /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
+				9F55F7592B2253C700CCA44F /* FirebaseAppCheck in Frameworks */,
+				9F55F7572B2253C700CCA44F /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				9FC3BECC2B24E24100993FD3 /* FirebaseFunctions in Frameworks */,
+				9F55F7622B22543D00CCA44F /* BackgroundRemoval in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,6 +106,7 @@
 			children = (
 				23A6317D2B1F9BEB00BDF56E /* StickerStudioAISwiftUITest */,
 				23A6317C2B1F9BEB00BDF56E /* Products */,
+				9F55F75A2B22540400CCA44F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -51,8 +121,16 @@
 		23A6317D2B1F9BEB00BDF56E /* StickerStudioAISwiftUITest */ = {
 			isa = PBXGroup;
 			children = (
-				23A6317E2B1F9BEB00BDF56E /* StickerStudioAISwiftUITestApp.swift */,
-				23A631802B1F9BEB00BDF56E /* ContentView.swift */,
+				9F55F7162B2251F500CCA44F /* Extension */,
+				9F55F71D2B2251F500CCA44F /* Models */,
+				9F55F7192B2251F500CCA44F /* Resources */,
+				9F55F72E2B2251F500CCA44F /* Screens */,
+				9F55F71B2B2251F500CCA44F /* Services */,
+				9F55F7262B2251F500CCA44F /* Views */,
+				9FFB1D122B1FA5FF008C1A47 /* StickerStudioAISwiftUITest.entitlements */,
+				9F55F7692B22553B00CCA44F /* GoogleService-Info.plist */,
+				9F55F74B2B22521300CCA44F /* ContentView.swift */,
+				9F55F74C2B22521300CCA44F /* StickerStudioAISwiftUIApp.swift */,
 				23A631822B1F9BEC00BDF56E /* Assets.xcassets */,
 				23A631842B1F9BEC00BDF56E /* Preview Content */,
 			);
@@ -65,6 +143,117 @@
 				23A631852B1F9BEC00BDF56E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9F55F7162B2251F500CCA44F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				9F55F7172B2251F500CCA44F /* Color+hex.swift */,
+				9F55F7182B2251F500CCA44F /* View+Keyboard.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		9F55F7192B2251F500CCA44F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9F55F71A2B2251F500CCA44F /* CustomColors.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		9F55F71B2B2251F500CCA44F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9F55F71C2B2251F500CCA44F /* NetworkManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		9F55F71D2B2251F500CCA44F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9F55F7222B2251F500CCA44F /* Request */,
+				9F55F71E2B2251F500CCA44F /* Response */,
+				9F55F7212B2251F500CCA44F /* PromptModel.swift */,
+				9F55F7252B2251F500CCA44F /* PageIntro.swift */,
+				9F963BD32B263D6D0051AAFB /* LoginViewState.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9F55F71E2B2251F500CCA44F /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				9F55F71F2B2251F500CCA44F /* TextToImageResponse.swift */,
+				9FC3BECD2B24E51700993FD3 /* GetUserResponse.swift */,
+				9F55F7202B2251F500CCA44F /* FetchImageResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		9F55F7222B2251F500CCA44F /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				9F55F7232B2251F500CCA44F /* FetchImageRequestModel.swift */,
+				9F55F7242B2251F500CCA44F /* TextToImageRequestModel.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		9F55F7262B2251F500CCA44F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9F55F7272B2251F500CCA44F /* GeneratedStickerView.swift */,
+				9F55F7282B2251F500CCA44F /* PromptView.swift */,
+				9F55F7292B2251F500CCA44F /* CastomTextField.swift */,
+				9F55F72A2B2251F500CCA44F /* PromptLayout.swift */,
+				9F55F72B2B2251F500CCA44F /* CustomIndicatorView.swift */,
+				9F55F72C2B2251F500CCA44F /* IntroView.swift */,
+				9F55F72D2B2251F500CCA44F /* Login */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9F55F72D2B2251F500CCA44F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		9F55F72E2B2251F500CCA44F /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				9F55F72F2B2251F500CCA44F /* CreateSticker */,
+				9F55F7332B2251F500CCA44F /* Login */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		9F55F72F2B2251F500CCA44F /* CreateSticker */ = {
+			isa = PBXGroup;
+			children = (
+				9F55F7302B2251F500CCA44F /* CreateStickerViewModel.swift */,
+				9F55F7312B2251F500CCA44F /* CreateStickerView.swift */,
+			);
+			path = CreateSticker;
+			sourceTree = "<group>";
+		};
+		9F55F7332B2251F500CCA44F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				9F55F7342B2251F500CCA44F /* LoginViewModel.swift */,
+				9F55F7352B2251F500CCA44F /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		9F55F75A2B22540400CCA44F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +272,19 @@
 			dependencies = (
 			);
 			name = StickerStudioAISwiftUITest;
+			packageProductDependencies = (
+				9F55F7502B2253C700CCA44F /* FirebaseAnalytics */,
+				9F55F7522B2253C700CCA44F /* FirebaseAnalyticsOnDeviceConversion */,
+				9F55F7542B2253C700CCA44F /* FirebaseAnalyticsSwift */,
+				9F55F7562B2253C700CCA44F /* FirebaseAnalyticsWithoutAdIdSupport */,
+				9F55F7582B2253C700CCA44F /* FirebaseAppCheck */,
+				9F55F75B2B22540400CCA44F /* FirebaseAuth */,
+				9F55F75E2B22541F00CCA44F /* Alamofire */,
+				9F55F7612B22543D00CCA44F /* BackgroundRemoval */,
+				9F55F7642B22544D00CCA44F /* TelegramStickersImport */,
+				9F55F7672B22547000CCA44F /* Kingfisher */,
+				9FC3BECB2B24E24100993FD3 /* FirebaseFunctions */,
+			);
 			productName = StickerStudioAISwiftUITest;
 			productReference = 23A6317B2B1F9BEB00BDF56E /* StickerStudioAISwiftUITest.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +313,14 @@
 				Base,
 			);
 			mainGroup = 23A631722B1F9BEB00BDF56E;
+			packageReferences = (
+				9F55F74F2B2253C700CCA44F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				9F55F75D2B22541F00CCA44F /* XCRemoteSwiftPackageReference "Alamofire" */,
+				9F55F7602B22543D00CCA44F /* XCRemoteSwiftPackageReference "BackgroundRemoval" */,
+				9F55F7632B22544D00CCA44F /* XCRemoteSwiftPackageReference "TelegramStickersImport" */,
+				9F55F7662B22547000CCA44F /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				9F963BD02B259AD20051AAFB /* XCRemoteSwiftPackageReference "stinsen" */,
+			);
 			productRefGroup = 23A6317C2B1F9BEB00BDF56E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,6 +337,7 @@
 			files = (
 				23A631862B1F9BEC00BDF56E /* Preview Assets.xcassets in Resources */,
 				23A631832B1F9BEC00BDF56E /* Assets.xcassets in Resources */,
+				9F55F76A2B22553B00CCA44F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,8 +348,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23A631812B1F9BEB00BDF56E /* ContentView.swift in Sources */,
-				23A6317F2B1F9BEB00BDF56E /* StickerStudioAISwiftUITestApp.swift in Sources */,
+				9F55F7412B2251F500CCA44F /* PromptView.swift in Sources */,
+				9F55F7402B2251F500CCA44F /* GeneratedStickerView.swift in Sources */,
+				9F55F7492B2251F500CCA44F /* LoginViewModel.swift in Sources */,
+				9F55F7442B2251F500CCA44F /* CustomIndicatorView.swift in Sources */,
+				9F55F74A2B2251F500CCA44F /* LoginView.swift in Sources */,
+				9F55F7392B2251F500CCA44F /* NetworkManager.swift in Sources */,
+				9FC3BECE2B24E51700993FD3 /* GetUserResponse.swift in Sources */,
+				9F55F7362B2251F500CCA44F /* Color+hex.swift in Sources */,
+				9F55F7452B2251F500CCA44F /* IntroView.swift in Sources */,
+				9F55F7472B2251F500CCA44F /* CreateStickerView.swift in Sources */,
+				9F55F74E2B22521400CCA44F /* StickerStudioAISwiftUIApp.swift in Sources */,
+				9F55F73D2B2251F500CCA44F /* FetchImageRequestModel.swift in Sources */,
+				9F55F7382B2251F500CCA44F /* CustomColors.swift in Sources */,
+				9F55F74D2B22521400CCA44F /* ContentView.swift in Sources */,
+				9F55F73E2B2251F500CCA44F /* TextToImageRequestModel.swift in Sources */,
+				9F55F7372B2251F500CCA44F /* View+Keyboard.swift in Sources */,
+				9F55F7462B2251F500CCA44F /* CreateStickerViewModel.swift in Sources */,
+				9F55F73C2B2251F500CCA44F /* PromptModel.swift in Sources */,
+				9F963BD42B263D6D0051AAFB /* LoginViewState.swift in Sources */,
+				9F55F7422B2251F500CCA44F /* CastomTextField.swift in Sources */,
+				9F55F73A2B2251F500CCA44F /* TextToImageResponse.swift in Sources */,
+				9F55F7432B2251F500CCA44F /* PromptLayout.swift in Sources */,
+				9F55F73B2B2251F500CCA44F /* FetchImageResponse.swift in Sources */,
+				9F55F73F2B2251F500CCA44F /* PageIntro.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,10 +497,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = StickerStudioAISwiftUITest/StickerStudioAISwiftUITest.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"StickerStudioAISwiftUITest/Preview Content\"";
-				DEVELOPMENT_TEAM = Y9G5U4WZMN;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = Y9G5U4WZMN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -282,6 +519,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ivan-lebedev.StickerStudioAISwiftUITest.StickerStudioAISwiftUITest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Ilya Develop";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -293,10 +532,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = StickerStudioAISwiftUITest/StickerStudioAISwiftUITest.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"StickerStudioAISwiftUITest/Preview Content\"";
-				DEVELOPMENT_TEAM = Y9G5U4WZMN;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = Y9G5U4WZMN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -311,6 +554,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ivan-lebedev.StickerStudioAISwiftUITest.StickerStudioAISwiftUITest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Ilya Develop";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -339,6 +584,115 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9F55F74F2B2253C700CCA44F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.19.0;
+			};
+		};
+		9F55F75D2B22541F00CCA44F /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.1;
+			};
+		};
+		9F55F7602B22543D00CCA44F /* XCRemoteSwiftPackageReference "BackgroundRemoval" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Ezaldeen99/BackgroundRemoval.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		9F55F7632B22544D00CCA44F /* XCRemoteSwiftPackageReference "TelegramStickersImport" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TelegramMessenger/TelegramStickersImport.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+		9F55F7662B22547000CCA44F /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.10.0;
+			};
+		};
+		9F963BD02B259AD20051AAFB /* XCRemoteSwiftPackageReference "stinsen" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rundfunk47/stinsen.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.13;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9F55F7502B2253C700CCA44F /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F55F74F2B2253C700CCA44F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		9F55F7522B2253C700CCA44F /* FirebaseAnalyticsOnDeviceConversion */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F55F74F2B2253C700CCA44F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsOnDeviceConversion;
+		};
+		9F55F7542B2253C700CCA44F /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F55F74F2B2253C700CCA44F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		9F55F7562B2253C700CCA44F /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F55F74F2B2253C700CCA44F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		9F55F7582B2253C700CCA44F /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F55F74F2B2253C700CCA44F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
+		9F55F75B2B22540400CCA44F /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F55F74F2B2253C700CCA44F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		9F55F75E2B22541F00CCA44F /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F55F75D2B22541F00CCA44F /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		9F55F7612B22543D00CCA44F /* BackgroundRemoval */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F55F7602B22543D00CCA44F /* XCRemoteSwiftPackageReference "BackgroundRemoval" */;
+			productName = BackgroundRemoval;
+		};
+		9F55F7642B22544D00CCA44F /* TelegramStickersImport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F55F7632B22544D00CCA44F /* XCRemoteSwiftPackageReference "TelegramStickersImport" */;
+			productName = TelegramStickersImport;
+		};
+		9F55F7672B22547000CCA44F /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F55F7662B22547000CCA44F /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		9FC3BECB2B24E24100993FD3 /* FirebaseFunctions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F55F74F2B2253C700CCA44F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFunctions;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 23A631732B1F9BEB00BDF56E /* Project object */;
 }
