@@ -88,15 +88,14 @@ struct IntroView: View {
                         Button {
                             viewModel.events.send(.pressRegistration)
                         } label: {
-                            Text("Continue")
-                                .fontWeight(.semibold)
-                                .foregroundColor(.white)
-                                .padding()
-                                .frame(width: .infinity)
-                                .background {
-                                    Capsule()
-                                        .fill(.black)
-                                }
+                            ZStack(alignment: .center) {
+                                RoundedRectangle(cornerRadius: 30)
+                                    .frame(height: 60)
+                                    .foregroundStyle(Color.black)
+                                Text("Sign In")
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.white)
+                            }
                         }
                     }
                 }

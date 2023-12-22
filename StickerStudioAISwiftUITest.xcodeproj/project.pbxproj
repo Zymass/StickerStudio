@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		23A631832B1F9BEC00BDF56E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23A631822B1F9BEC00BDF56E /* Assets.xcassets */; };
 		23A631862B1F9BEC00BDF56E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23A631852B1F9BEC00BDF56E /* Preview Assets.xcassets */; };
+		9F2681BB2B2F609000010838 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2681BA2B2F609000010838 /* AccountView.swift */; };
 		9F55F7362B2251F500CCA44F /* Color+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F7172B2251F500CCA44F /* Color+hex.swift */; };
 		9F55F7372B2251F500CCA44F /* View+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F7182B2251F500CCA44F /* View+Keyboard.swift */; };
 		9F55F7382B2251F500CCA44F /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F71A2B2251F500CCA44F /* CustomColors.swift */; };
@@ -39,18 +40,31 @@
 		9F55F75C2B22540400CCA44F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 9F55F75B2B22540400CCA44F /* FirebaseAuth */; };
 		9F55F75F2B22541F00CCA44F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9F55F75E2B22541F00CCA44F /* Alamofire */; };
 		9F55F7622B22543D00CCA44F /* BackgroundRemoval in Frameworks */ = {isa = PBXBuildFile; productRef = 9F55F7612B22543D00CCA44F /* BackgroundRemoval */; };
-		9F55F7652B22544D00CCA44F /* TelegramStickersImport in Frameworks */ = {isa = PBXBuildFile; productRef = 9F55F7642B22544D00CCA44F /* TelegramStickersImport */; };
 		9F55F7682B22547000CCA44F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 9F55F7672B22547000CCA44F /* Kingfisher */; };
 		9F55F76A2B22553B00CCA44F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F55F7692B22553B00CCA44F /* GoogleService-Info.plist */; };
 		9F963BD42B263D6D0051AAFB /* LoginViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F963BD32B263D6D0051AAFB /* LoginViewState.swift */; };
 		9FC3BECC2B24E24100993FD3 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 9FC3BECB2B24E24100993FD3 /* FirebaseFunctions */; };
 		9FC3BECE2B24E51700993FD3 /* GetUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC3BECD2B24E51700993FD3 /* GetUserResponse.swift */; };
+		9FEEF3782B2F6796005CC79D /* SubscribePlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEEF3772B2F6796005CC79D /* SubscribePlanView.swift */; };
+		9FEEF37A2B2F850F005CC79D /* AccountStickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEEF3792B2F850F005CC79D /* AccountStickerCell.swift */; };
+		9FEEF37D2B2F925A005CC79D /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 9FEEF37C2B2F925A005CC79D /* Lottie */; };
+		9FEEF37F2B2F9316005CC79D /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEEF37E2B2F9315005CC79D /* LottieView.swift */; };
+		9FEEF3832B2F9B58005CC79D /* loadingAnimation.lottie in Resources */ = {isa = PBXBuildFile; fileRef = 9FEEF3822B2F9B2A005CC79D /* loadingAnimation.lottie */; };
+		9FF5C26D2B31E4230014A216 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9FF5C26C2B31E4230014A216 /* FirebaseStorage */; };
+		9FF5C2702B320A6E0014A216 /* TelegramStickersLimits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF5C26F2B320A6E0014A216 /* TelegramStickersLimits.swift */; };
+		9FF5C2732B320B2C0014A216 /* TelegramApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF5C2722B320B2C0014A216 /* TelegramApp.swift */; };
+		9FF5C2752B320B490014A216 /* StickersError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF5C2742B320B490014A216 /* StickersError.swift */; };
+		9FF5C2772B320B610014A216 /* StickerSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF5C2762B320B610014A216 /* StickerSet.swift */; };
+		9FF5C2792B320B7C0014A216 /* Sticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF5C2782B320B7C0014A216 /* Sticker.swift */; };
+		9FF5C27B2B32274D0014A216 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF5C27A2B32274D0014A216 /* AccountViewModel.swift */; };
+		9FF5C27D2B3227FC0014A216 /* AccountStickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF5C27C2B3227FC0014A216 /* AccountStickerModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		23A6317B2B1F9BEB00BDF56E /* StickerStudioAISwiftUITest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StickerStudioAISwiftUITest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23A631822B1F9BEC00BDF56E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		23A631852B1F9BEC00BDF56E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9F2681BA2B2F609000010838 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		9F55F7172B2251F500CCA44F /* Color+hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+hex.swift"; sourceTree = "<group>"; };
 		9F55F7182B2251F500CCA44F /* View+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Keyboard.swift"; sourceTree = "<group>"; };
 		9F55F71A2B2251F500CCA44F /* CustomColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
@@ -76,6 +90,18 @@
 		9F55F7692B22553B00CCA44F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9F963BD32B263D6D0051AAFB /* LoginViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewState.swift; sourceTree = "<group>"; };
 		9FC3BECD2B24E51700993FD3 /* GetUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserResponse.swift; sourceTree = "<group>"; };
+		9FEEF3772B2F6796005CC79D /* SubscribePlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribePlanView.swift; sourceTree = "<group>"; };
+		9FEEF3792B2F850F005CC79D /* AccountStickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountStickerCell.swift; sourceTree = "<group>"; };
+		9FEEF37E2B2F9315005CC79D /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		9FEEF3822B2F9B2A005CC79D /* loadingAnimation.lottie */ = {isa = PBXFileReference; lastKnownFileType = file; path = loadingAnimation.lottie; sourceTree = "<group>"; };
+		9FF5C26E2B31F0CF0014A216 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9FF5C26F2B320A6E0014A216 /* TelegramStickersLimits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelegramStickersLimits.swift; sourceTree = "<group>"; };
+		9FF5C2722B320B2C0014A216 /* TelegramApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelegramApp.swift; sourceTree = "<group>"; };
+		9FF5C2742B320B490014A216 /* StickersError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickersError.swift; sourceTree = "<group>"; };
+		9FF5C2762B320B610014A216 /* StickerSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerSet.swift; sourceTree = "<group>"; };
+		9FF5C2782B320B7C0014A216 /* Sticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sticker.swift; sourceTree = "<group>"; };
+		9FF5C27A2B32274D0014A216 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
+		9FF5C27C2B3227FC0014A216 /* AccountStickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountStickerModel.swift; sourceTree = "<group>"; };
 		9FFB1D122B1FA5FF008C1A47 /* StickerStudioAISwiftUITest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StickerStudioAISwiftUITest.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,16 +111,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F55F7552B2253C700CCA44F /* FirebaseAnalyticsSwift in Frameworks */,
-				9F55F7652B22544D00CCA44F /* TelegramStickersImport in Frameworks */,
 				9F55F75F2B22541F00CCA44F /* Alamofire in Frameworks */,
 				9F55F75C2B22540400CCA44F /* FirebaseAuth in Frameworks */,
 				9F55F7682B22547000CCA44F /* Kingfisher in Frameworks */,
 				9F55F7512B2253C700CCA44F /* FirebaseAnalytics in Frameworks */,
 				9F55F7532B2253C700CCA44F /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 				9F55F7592B2253C700CCA44F /* FirebaseAppCheck in Frameworks */,
+				9FF5C26D2B31E4230014A216 /* FirebaseStorage in Frameworks */,
 				9F55F7572B2253C700CCA44F /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				9FC3BECC2B24E24100993FD3 /* FirebaseFunctions in Frameworks */,
 				9F55F7622B22543D00CCA44F /* BackgroundRemoval in Frameworks */,
+				9FEEF37D2B2F925A005CC79D /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +148,7 @@
 		23A6317D2B1F9BEB00BDF56E /* StickerStudioAISwiftUITest */ = {
 			isa = PBXGroup;
 			children = (
+				9FF5C26E2B31F0CF0014A216 /* Info.plist */,
 				9F55F7162B2251F500CCA44F /* Extension */,
 				9F55F71D2B2251F500CCA44F /* Models */,
 				9F55F7192B2251F500CCA44F /* Resources */,
@@ -145,6 +173,17 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		9F2681B82B2F5BD100010838 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				9F2681BA2B2F609000010838 /* AccountView.swift */,
+				9FEEF3792B2F850F005CC79D /* AccountStickerCell.swift */,
+				9FF5C27A2B32274D0014A216 /* AccountViewModel.swift */,
+				9FEEF3772B2F6796005CC79D /* SubscribePlanView.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
 		9F55F7162B2251F500CCA44F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +196,7 @@
 		9F55F7192B2251F500CCA44F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9FEEF3822B2F9B2A005CC79D /* loadingAnimation.lottie */,
 				9F55F71A2B2251F500CCA44F /* CustomColors.swift */,
 			);
 			path = Resources;
@@ -166,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				9F55F71C2B2251F500CCA44F /* NetworkManager.swift */,
+				9FF5C2712B320B180014A216 /* TelegramManager */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -177,6 +218,7 @@
 				9F55F71E2B2251F500CCA44F /* Response */,
 				9F55F7212B2251F500CCA44F /* PromptModel.swift */,
 				9F55F7252B2251F500CCA44F /* PageIntro.swift */,
+				9FF5C27C2B3227FC0014A216 /* AccountStickerModel.swift */,
 				9F963BD32B263D6D0051AAFB /* LoginViewState.swift */,
 			);
 			path = Models;
@@ -208,6 +250,7 @@
 				9F55F7282B2251F500CCA44F /* PromptView.swift */,
 				9F55F7292B2251F500CCA44F /* CastomTextField.swift */,
 				9F55F72A2B2251F500CCA44F /* PromptLayout.swift */,
+				9FEEF37E2B2F9315005CC79D /* LottieView.swift */,
 				9F55F72B2B2251F500CCA44F /* CustomIndicatorView.swift */,
 				9F55F72C2B2251F500CCA44F /* IntroView.swift */,
 				9F55F72D2B2251F500CCA44F /* Login */,
@@ -225,6 +268,7 @@
 		9F55F72E2B2251F500CCA44F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				9F2681B82B2F5BD100010838 /* Account */,
 				9F55F72F2B2251F500CCA44F /* CreateSticker */,
 				9F55F7332B2251F500CCA44F /* Login */,
 			);
@@ -256,6 +300,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9FF5C2712B320B180014A216 /* TelegramManager */ = {
+			isa = PBXGroup;
+			children = (
+				9FF5C26F2B320A6E0014A216 /* TelegramStickersLimits.swift */,
+				9FF5C2722B320B2C0014A216 /* TelegramApp.swift */,
+				9FF5C2782B320B7C0014A216 /* Sticker.swift */,
+				9FF5C2742B320B490014A216 /* StickersError.swift */,
+				9FF5C2762B320B610014A216 /* StickerSet.swift */,
+			);
+			path = TelegramManager;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -281,9 +337,10 @@
 				9F55F75B2B22540400CCA44F /* FirebaseAuth */,
 				9F55F75E2B22541F00CCA44F /* Alamofire */,
 				9F55F7612B22543D00CCA44F /* BackgroundRemoval */,
-				9F55F7642B22544D00CCA44F /* TelegramStickersImport */,
 				9F55F7672B22547000CCA44F /* Kingfisher */,
 				9FC3BECB2B24E24100993FD3 /* FirebaseFunctions */,
+				9FEEF37C2B2F925A005CC79D /* Lottie */,
+				9FF5C26C2B31E4230014A216 /* FirebaseStorage */,
 			);
 			productName = StickerStudioAISwiftUITest;
 			productReference = 23A6317B2B1F9BEB00BDF56E /* StickerStudioAISwiftUITest.app */;
@@ -317,9 +374,8 @@
 				9F55F74F2B2253C700CCA44F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				9F55F75D2B22541F00CCA44F /* XCRemoteSwiftPackageReference "Alamofire" */,
 				9F55F7602B22543D00CCA44F /* XCRemoteSwiftPackageReference "BackgroundRemoval" */,
-				9F55F7632B22544D00CCA44F /* XCRemoteSwiftPackageReference "TelegramStickersImport" */,
 				9F55F7662B22547000CCA44F /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				9F963BD02B259AD20051AAFB /* XCRemoteSwiftPackageReference "stinsen" */,
+				9FEEF37B2B2F925A005CC79D /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 23A6317C2B1F9BEB00BDF56E /* Products */;
 			projectDirPath = "";
@@ -335,6 +391,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FEEF3832B2F9B58005CC79D /* loadingAnimation.lottie in Resources */,
 				23A631862B1F9BEC00BDF56E /* Preview Assets.xcassets in Resources */,
 				23A631832B1F9BEC00BDF56E /* Assets.xcassets in Resources */,
 				9F55F76A2B22553B00CCA44F /* GoogleService-Info.plist in Resources */,
@@ -349,6 +406,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F55F7412B2251F500CCA44F /* PromptView.swift in Sources */,
+				9FF5C2702B320A6E0014A216 /* TelegramStickersLimits.swift in Sources */,
 				9F55F7402B2251F500CCA44F /* GeneratedStickerView.swift in Sources */,
 				9F55F7492B2251F500CCA44F /* LoginViewModel.swift in Sources */,
 				9F55F7442B2251F500CCA44F /* CustomIndicatorView.swift in Sources */,
@@ -359,19 +417,29 @@
 				9F55F7452B2251F500CCA44F /* IntroView.swift in Sources */,
 				9F55F7472B2251F500CCA44F /* CreateStickerView.swift in Sources */,
 				9F55F74E2B22521400CCA44F /* StickerStudioAISwiftUIApp.swift in Sources */,
+				9FF5C2772B320B610014A216 /* StickerSet.swift in Sources */,
+				9FEEF37F2B2F9316005CC79D /* LottieView.swift in Sources */,
 				9F55F73D2B2251F500CCA44F /* FetchImageRequestModel.swift in Sources */,
 				9F55F7382B2251F500CCA44F /* CustomColors.swift in Sources */,
 				9F55F74D2B22521400CCA44F /* ContentView.swift in Sources */,
+				9FEEF3782B2F6796005CC79D /* SubscribePlanView.swift in Sources */,
+				9FF5C2752B320B490014A216 /* StickersError.swift in Sources */,
 				9F55F73E2B2251F500CCA44F /* TextToImageRequestModel.swift in Sources */,
 				9F55F7372B2251F500CCA44F /* View+Keyboard.swift in Sources */,
 				9F55F7462B2251F500CCA44F /* CreateStickerViewModel.swift in Sources */,
+				9FF5C2732B320B2C0014A216 /* TelegramApp.swift in Sources */,
 				9F55F73C2B2251F500CCA44F /* PromptModel.swift in Sources */,
 				9F963BD42B263D6D0051AAFB /* LoginViewState.swift in Sources */,
+				9FF5C27D2B3227FC0014A216 /* AccountStickerModel.swift in Sources */,
+				9F2681BB2B2F609000010838 /* AccountView.swift in Sources */,
 				9F55F7422B2251F500CCA44F /* CastomTextField.swift in Sources */,
 				9F55F73A2B2251F500CCA44F /* TextToImageResponse.swift in Sources */,
+				9FF5C2792B320B7C0014A216 /* Sticker.swift in Sources */,
 				9F55F7432B2251F500CCA44F /* PromptLayout.swift in Sources */,
 				9F55F73B2B2251F500CCA44F /* FetchImageResponse.swift in Sources */,
 				9F55F73F2B2251F500CCA44F /* PageIntro.swift in Sources */,
+				9FF5C27B2B32274D0014A216 /* AccountViewModel.swift in Sources */,
+				9FEEF37A2B2F850F005CC79D /* AccountStickerCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,11 +575,13 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = Y9G5U4WZMN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StickerStudioAISwiftUITest/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Need access for save sticker to library";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -542,11 +612,13 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = Y9G5U4WZMN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StickerStudioAISwiftUITest/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Need access for save sticker to library";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -610,14 +682,6 @@
 				kind = branch;
 			};
 		};
-		9F55F7632B22544D00CCA44F /* XCRemoteSwiftPackageReference "TelegramStickersImport" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/TelegramMessenger/TelegramStickersImport.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.1.0;
-			};
-		};
 		9F55F7662B22547000CCA44F /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -626,12 +690,12 @@
 				minimumVersion = 7.10.0;
 			};
 		};
-		9F963BD02B259AD20051AAFB /* XCRemoteSwiftPackageReference "stinsen" */ = {
+		9FEEF37B2B2F925A005CC79D /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/rundfunk47/stinsen.git";
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.13;
+				minimumVersion = 4.3.4;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -677,11 +741,6 @@
 			package = 9F55F7602B22543D00CCA44F /* XCRemoteSwiftPackageReference "BackgroundRemoval" */;
 			productName = BackgroundRemoval;
 		};
-		9F55F7642B22544D00CCA44F /* TelegramStickersImport */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9F55F7632B22544D00CCA44F /* XCRemoteSwiftPackageReference "TelegramStickersImport" */;
-			productName = TelegramStickersImport;
-		};
 		9F55F7672B22547000CCA44F /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9F55F7662B22547000CCA44F /* XCRemoteSwiftPackageReference "Kingfisher" */;
@@ -691,6 +750,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9F55F74F2B2253C700CCA44F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFunctions;
+		};
+		9FEEF37C2B2F925A005CC79D /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9FEEF37B2B2F925A005CC79D /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		9FF5C26C2B31E4230014A216 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F55F74F2B2253C700CCA44F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

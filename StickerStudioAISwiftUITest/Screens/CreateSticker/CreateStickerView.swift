@@ -9,17 +9,13 @@ import SwiftUI
 
 struct CreateStickerView: View {
     @ObservedObject var viewModel = CreateStickerViewModel()
-    @State var stickerViewOpacity = 1.0
-    @State var telegramButtonOpacity = 1.0
+    @State var generateViewOpacity = 1.0
 
     var body: some View {
         GeometryReader { geometry in
             VStack {
                 GeneratedStickerView(viewModel: viewModel)
-                    .onTapGesture {
-                        print("Image pressed")
-                    }
-                    .opacity(stickerViewOpacity)
+                    .opacity(generateViewOpacity)
 
                 Button {
                     viewModel.events.send(.exportToTelegram)
@@ -39,7 +35,7 @@ struct CreateStickerView: View {
                 }
                 .padding()
                 .frame(height: 80)
-                .opacity(telegramButtonOpacity)
+                .opacity(viewModel.isTelegramButtinHidden ? 0 : 1)
 
                 VStack {
                     HStack {
@@ -51,7 +47,7 @@ struct CreateStickerView: View {
                             .foregroundStyle(CustomColors.purple)
                         Spacer()
                     }
-                    PromptField(promts: $viewModel.positivePromts)
+                    PromptField(promts: $viewModel.positivePrompts)
                         .padding()
                 }
                 
@@ -81,8 +77,8 @@ struct CreateStickerView: View {
         .background(CustomColors.white)
         .onReceive(keyboardPublisher) { value in
             withAnimation(.linear(duration: 0.2)) {
-                stickerViewOpacity = value ? 0 : 1
-                telegramButtonOpacity = value ? 0 : 1
+                viewModel.isTelegramButtinHidden = value
+                generateViewOpacity = value ? 0 : 1
             }
         }
     }

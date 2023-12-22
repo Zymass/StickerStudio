@@ -7,15 +7,21 @@
 
 import Foundation
 
-struct TextToImageResponse: Codable {
-    let status: String
-    let generationTime: Double
-    let id: Int
-    let output, proxyLinks: [String]
-    let nsfwContentDetected: Bool
-    let webhookStatus: String
-    let meta: Meta
-    let tip: String
+struct GenerateImageResponse: Codable {
+    let result: String?
+    let responseData: TextToImageData?
+}
+
+struct TextToImageData: Codable {
+    let status: String?
+    let generationTime: Double?
+    let id: Int?
+    let output: [String]?
+    let proxyLinks: [String]?
+    let nsfwContentDetected: Bool?
+    let webhookStatus: String?
+    let meta: Meta?
+    let tip: String?
 
     enum CodingKeys: String, CodingKey {
         case status, generationTime, id, output
@@ -27,19 +33,19 @@ struct TextToImageResponse: Codable {
 }
 
 struct Meta: Codable {
-    let prompt, modelId, negativePrompt, scheduler: String
-    let safetyChecker: String
-    let width, height: Int
-    let guidanceScale: Double
-    let seed, steps, nSamples: Int
-    let fullURL, instantResponse, tomesd, freeU: String
-    let upscale: Int
-    let multiLingual, panorama, selfAttention, useKarrasSigmas: String
-    let algorithmType, safetyCheckerType: String
+    let prompt, modelId, negativePrompt, scheduler: String?
+    let safetyChecker: String?
+    let width, height: Int?
+    let guidanceScale: Double?
+    let seed, steps, nSamples: Int?
+    let fullURL, instantResponse, tomesd, freeU: String?
+    let upscale: Int?
+    let multiLingual, panorama, selfAttention, useKarrasSigmas: String?
+    let algorithmType, safetyCheckerType: String?
     let embeddings, vae: String?
-    let lora, loraStrength: String
-    let clipSkip: Int
-    let temp, base64, filePrefix: String
+    let lora, loraStrength: String?
+    let clipSkip: Int?
+    let temp, base64, filePrefix: String?
 
     enum CodingKeys: String, CodingKey {
         case prompt

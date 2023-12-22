@@ -13,8 +13,11 @@ struct GeneratedStickerView: View {
     var body: some View {
         GeometryReader(content: { geometry in
             ZStack(alignment: .top) {
-                viewModel.textToImage
-                    .resizable()
+                if viewModel.isLoading {
+                    LottieView(url: Bundle.main.url(
+                        forResource: "loadingAnimation",
+                        withExtension: "lottie"
+                    )!)
                     .scaledToFit()
                     .frame(
                         height: geometry.size.width * 0.9,
@@ -24,20 +27,35 @@ struct GeneratedStickerView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 60))
                     .shadow(color: CustomColors.black, radius: 5, x: 3, y: 2)
                     .padding([.leading, .trailing])
-
+                } else {
+                    viewModel.textToImage
+                        .resizable()
+                        .scaledToFit()
+                        .frame(
+                            height: geometry.size.width * 0.9,
+                            alignment: .center
+                        )
+                        .background(CustomColors.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 60))
+                        .shadow(color: CustomColors.black, radius: 5, x: 3, y: 2)
+                        .padding([.leading, .trailing])
+                }
                 HStack {
                     Spacer()
                     VStack {
-                        Button(action: {
-                            print("Share was pressed")
-                        }, label: {
+                        ShareLink(
+                            item: viewModel.textToImage,
+                            preview: SharePreview(
+                                "StickerStudio",
+                                image: viewModel.textToImage
+                            )) {
                             Image(systemName: "square.and.arrow.up.circle.fill")
                                 .resizable()
                                 .frame(width: 60, height: 60)
                                 .foregroundStyle(CustomColors.purple)
-                        })
+                        }
                         Button(action: {
-                            print("Share was pressed")
+                            viewModel.events.send(.tapSaveImage)
                         }, label: {
                             Image(systemName: "arrow.down.to.line.circle.fill")
                                 .resizable()

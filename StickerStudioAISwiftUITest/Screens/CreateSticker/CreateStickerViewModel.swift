@@ -8,17 +8,21 @@
 import SwiftUI
 import Combine
 import BackgroundRemoval
-import TelegramStickersImport
 import Kingfisher
+import FirebaseStorage
 
 enum CreateStickerViewEvents {
     case tapMainButton
     case exportToTelegram
+    case tapSaveImage
 }
 
-final class CreateStickerViewModel: ObservableObject {
-    @Published var positivePromts: [Prompt] = []
-    @Published var textToImage: Image = Image("123")
+final class CreateStickerViewModel: NSObject, ObservableObject {
+    @Published var positivePrompts: [Prompt] = []
+    @Published var textToImage: Image = Image(.defaultSticker)
+    @Published var isLoading: Bool = false
+    @Published var isTelegramButtinHidden: Bool = true
+    @AppStorage("uid") private var uid: String?
     private var currentSticker: UIImage?
 
     let events = PassthroughSubject<CreateStickerViewEvents, Never>()
@@ -26,7 +30,8 @@ final class CreateStickerViewModel: ObservableObject {
 
     private var cancellables = Set<AnyCancellable>()
 
-    init() {
+    override init() {
+        super.init()
         binding()
     }
 
@@ -42,21 +47,27 @@ final class CreateStickerViewModel: ObservableObject {
                     guard let currentSticker else { return }
 
                     exportSticker(image: currentSticker)
+                case .tapSaveImage:
+                    guard let currentSticker else { return }
+                    
+                    writeToPhotoAlbum(image: currentSticker)
                 }
             }
             .store(in: &cancellables)
     }
 
     private func textToImageRequest() {
-        let positivePrompts = positivePromts.map { $0.value }.joined(separator: ", ")
+        let prompt = positivePrompts.map { $0.value }.joined(separator: ", ")
+        isLoading = true
+        isTelegramButtinHidden = true
 
-        networkManager.getStickerImage(prompt: positivePrompts) { [weak self] response in
+        networkManager.createSticker(prompt: prompt + "Sticker, contour, Vector, White Background, cartoon style, sticker 2d, diecut sticker –v 4 –upbeta –q 2 –v 5 –s 750, no outline") { [weak self] response in
             guard let self else { return }
 
-            if let imageUrl = response?.output.first {
+            if let imageUrl = response?.responseData?.output?.first {
                 removeBackground(imageUrl: imageUrl)
             } else {
-                fetchImage(id: response?.id ?? 0)
+                fetchImage(id: response?.responseData?.id ?? 0)
             }
         }
     }
@@ -65,10 +76,10 @@ final class CreateStickerViewModel: ObservableObject {
         networkManager.fetchImage(id: id) { [weak self] response in
             guard let self else { return }
 
-            if let imageUrl = response?.output.first {
+            if let imageUrl = response?.responseData?.output?.first {
                 removeBackground(imageUrl: imageUrl)
             } else {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                     self.fetchImage(id: id)
                     print("fetch")
                 }
@@ -86,8 +97,11 @@ final class CreateStickerViewModel: ObservableObject {
             case .success(let response):
                 guard let imageWithoutBackground = try? BackgroundRemoval.init().removeBackground(image: response.image) else { return }
 
+                isLoading = false
                 currentSticker = imageWithoutBackground
                 textToImage = Image(uiImage: imageWithoutBackground)
+                isTelegramButtinHidden = false
+                uploadImageToCloudStorage()
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -112,5 +126,59 @@ final class CreateStickerViewModel: ObservableObject {
         UIGraphicsEndImageContext()
 
         return resultImage ?? UIImage()
+    }
+
+    private func writeToPhotoAlbum(image: UIImage) {
+        UIImageWriteToSavedPhotosAlbum(UIImage(data: image.pngData()!)!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
+
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
+        print("Did finish saving")
+    }
+
+    private func uploadImageToCloudStorage() {
+        let storage = Storage.storage()
+
+        // Create a root reference
+        let storageRef = storage.reference()
+
+        guard let data = currentSticker?.pngData() else { return }
+
+        // Create a reference to the file you want to upload
+        let path = "stickers/\(uid ?? "error")/\(randomNonceString(length: 32))"
+        let riversRef = storageRef.child(path)
+
+        // Upload the file to the path
+        _ = riversRef.putData(data, metadata: nil) { [weak self] (metadata, error) in
+            guard let self else { return }
+
+            if metadata != nil {
+                networkManager.updateUser(sticker: path) { result in
+                    print("Update user success: \(result)")
+                }
+            } else {
+                print(error?.localizedDescription ?? "")
+            }
+        }
+    }
+
+    private func randomNonceString(length: Int = 32) -> String {
+        precondition(length > 0)
+        var randomBytes = [UInt8](repeating: 0, count: length)
+        let errorCode = SecRandomCopyBytes(kSecRandomDefault, randomBytes.count, &randomBytes)
+        if errorCode != errSecSuccess {
+            fatalError(
+                "Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)"
+            )
+        }
+
+        let charset: [Character] =
+        Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
+
+        let nonce = randomBytes.map { byte in
+            charset[Int(byte) % charset.count]
+        }
+
+        return String(nonce)
     }
 }

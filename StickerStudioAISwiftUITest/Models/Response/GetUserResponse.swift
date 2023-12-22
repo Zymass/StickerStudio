@@ -8,15 +8,15 @@
 import Foundation
 
 struct GetUserResponse: Codable {
-    let result: UserModel
+    let result: UserModel?
 }
 
 struct UserModel: Codable {
-    let generationsDone: Int
-    let uid: String
-    let creationTime: String
-    let lastSignInTime: Int
-    let email: String
-    let freeGenerationrequestDate: Int
-    let generations: Int
+    let generationsDone: Int?
+    let uid: String?
+    let creationTime: String?
+    let lastSignInTime: Int?
+    let email: String?
+    let freeGenerationrequestDate: Int?
+    let generations: Int?
 }
