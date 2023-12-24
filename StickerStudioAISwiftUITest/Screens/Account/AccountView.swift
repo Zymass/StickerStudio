@@ -28,6 +28,9 @@ struct AccountView: View {
                         ForEach(viewModel.stickerModels, id: \.id) { item in
                             AccountStickerCell(image: item.image)
                                 .frame(width: geometry.size.width * 0.4, height: geometry.size.width * 0.4)
+                                .onTapGesture {
+                                    print(item.id)
+                                }
                         }
                     }
                     .padding()
