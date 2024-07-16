@@ -48,12 +48,13 @@ struct GeneratedStickerView: View {
                             preview: SharePreview(
                                 "StickerStudio",
                                 image: viewModel.textToImage
-                            )) {
-                            Image(systemName: "square.and.arrow.up.circle.fill")
-                                .resizable()
-                                .frame(width: 60, height: 60)
-                                .foregroundStyle(CustomColors.purple)
-                        }
+                            ), label: {
+                                Image(systemName: "square.and.arrow.up.circle.fill")
+                                    .resizable()
+                                    .frame(width: 60, height: 60)
+                                    .foregroundStyle(CustomColors.purple)
+                            })
+                        .opacity(viewModel.isLoading ? 0 : 1)
                         Button(action: {
                             viewModel.events.send(.tapSaveImage)
                         }, label: {
@@ -62,6 +63,7 @@ struct GeneratedStickerView: View {
                                 .frame(width: 60, height: 60)
                                 .foregroundStyle(CustomColors.purple)
                         })
+                        .opacity(viewModel.isLoading ? 0 : 1)
                     }
                     .padding(.trailing, -4)
                 }

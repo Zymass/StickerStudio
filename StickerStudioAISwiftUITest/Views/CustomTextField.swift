@@ -1,5 +1,5 @@
 //
-//  CastomTextField.swift
+//  CustomTextField.swift
 //  StickerStudioAISwiftUI
 //
 //  Created by Ilia Filiaev on 09.11.2023.

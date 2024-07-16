@@ -9,11 +9,13 @@ import SwiftUI
 
 struct PromptField: View {
     @Binding var promts: [Prompt]
+    @FocusState var focusState: Bool
 
     var body: some View {
         PromptLayout(alignment: .leading) {
             ForEach($promts) { $prompt in
                 PromtView(promt: $prompt, allPromts: $promts)
+                    .focused($focusState)
                     .onChange(of: prompt.value) { newValue in
                         if newValue.last == "," {
                             prompt.value.removeLast()
@@ -46,7 +48,7 @@ struct PromptField: View {
 fileprivate struct PromtView: View {
     @Binding var promt: Prompt
     @Binding var allPromts: [Prompt]
-    @FocusState private var isFocused: Bool
+    @FocusState var isFocused: Bool
     @Environment(\.colorScheme) private var colorScheme
     var body: some View {
         BackSpaceListnerTextField(hint: "Tag", text: $promt.value, onBackPressed: {

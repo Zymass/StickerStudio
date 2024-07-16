@@ -43,6 +43,7 @@ final class CreateStickerViewModel: NSObject, ObservableObject {
                 switch event {
                 case .tapMainButton:
                     textToImageRequest()
+                    isTelegramButtinHidden = true
                 case .exportToTelegram:
                     guard let currentSticker else { return }
 

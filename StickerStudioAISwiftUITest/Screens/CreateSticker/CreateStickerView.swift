@@ -10,13 +10,13 @@ import SwiftUI
 struct CreateStickerView: View {
     @ObservedObject var viewModel = CreateStickerViewModel()
     @State var generateViewOpacity = 1.0
+    @FocusState private var focused: Bool
 
     var body: some View {
         GeometryReader { geometry in
             VStack {
                 GeneratedStickerView(viewModel: viewModel)
                     .opacity(generateViewOpacity)
-
                 Button {
                     viewModel.events.send(.exportToTelegram)
                 } label: {
@@ -33,6 +33,7 @@ struct CreateStickerView: View {
                         }
                     }
                 }
+                .disabled(viewModel.isLoading)
                 .padding()
                 .frame(height: 80)
                 .opacity(viewModel.isTelegramButtinHidden ? 0 : 1)
@@ -47,13 +48,18 @@ struct CreateStickerView: View {
                             .foregroundStyle(CustomColors.purple)
                         Spacer()
                     }
-                    PromptField(promts: $viewModel.positivePrompts)
+                    PromptField(
+                        promts: $viewModel.positivePrompts,
+                        focusState: _focused
+                    )
                         .padding()
+                        .disabled(viewModel.isLoading)
                 }
                 
                 Spacer()
 
                 Button {
+                    focused = false
                     viewModel.events.send(.tapMainButton)
                 } label: {
                     ZStack {
@@ -70,6 +76,8 @@ struct CreateStickerView: View {
                         }
                     }
                 }
+                .opacity(viewModel.isLoading ? 0.5 : 1)
+                .disabled(viewModel.isLoading)
                 .padding()
                 .frame(height: 100)
             }
