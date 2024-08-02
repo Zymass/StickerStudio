@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		23A631832B1F9BEC00BDF56E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23A631822B1F9BEC00BDF56E /* Assets.xcassets */; };
 		23A631862B1F9BEC00BDF56E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23A631852B1F9BEC00BDF56E /* Preview Assets.xcassets */; };
+		5FA5C5452C4A8F0100ABB5B3 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 5FA5C5442C4A8F0100ABB5B3 /* FirebaseFirestore */; };
 		5FCA8D8C2C3DCE0A00CADFE9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5FCA8D8B2C3DCE0A00CADFE9 /* GoogleService-Info.plist */; };
 		9F2681BB2B2F609000010838 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2681BA2B2F609000010838 /* AccountView.swift */; };
 		9F55F7362B2251F500CCA44F /* Color+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F55F7172B2251F500CCA44F /* Color+hex.swift */; };
@@ -40,7 +41,6 @@
 		9F55F7592B2253C700CCA44F /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 9F55F7582B2253C700CCA44F /* FirebaseAppCheck */; };
 		9F55F75C2B22540400CCA44F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 9F55F75B2B22540400CCA44F /* FirebaseAuth */; };
 		9F55F75F2B22541F00CCA44F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9F55F75E2B22541F00CCA44F /* Alamofire */; };
-		9F55F7622B22543D00CCA44F /* BackgroundRemoval in Frameworks */ = {isa = PBXBuildFile; productRef = 9F55F7612B22543D00CCA44F /* BackgroundRemoval */; };
 		9F55F7682B22547000CCA44F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 9F55F7672B22547000CCA44F /* Kingfisher */; };
 		9F963BD42B263D6D0051AAFB /* LoginViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F963BD32B263D6D0051AAFB /* LoginViewState.swift */; };
 		9FC3BECC2B24E24100993FD3 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 9FC3BECB2B24E24100993FD3 /* FirebaseFunctions */; };
@@ -115,12 +115,12 @@
 				9F55F75C2B22540400CCA44F /* FirebaseAuth in Frameworks */,
 				9F55F7682B22547000CCA44F /* Kingfisher in Frameworks */,
 				9F55F7512B2253C700CCA44F /* FirebaseAnalytics in Frameworks */,
+				5FA5C5452C4A8F0100ABB5B3 /* FirebaseFirestore in Frameworks */,
 				9F55F7532B2253C700CCA44F /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 				9F55F7592B2253C700CCA44F /* FirebaseAppCheck in Frameworks */,
 				9FF5C26D2B31E4230014A216 /* FirebaseStorage in Frameworks */,
 				9F55F7572B2253C700CCA44F /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				9FC3BECC2B24E24100993FD3 /* FirebaseFunctions in Frameworks */,
-				9F55F7622B22543D00CCA44F /* BackgroundRemoval in Frameworks */,
 				9FEEF37D2B2F925A005CC79D /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,11 +336,11 @@
 				9F55F7582B2253C700CCA44F /* FirebaseAppCheck */,
 				9F55F75B2B22540400CCA44F /* FirebaseAuth */,
 				9F55F75E2B22541F00CCA44F /* Alamofire */,
-				9F55F7612B22543D00CCA44F /* BackgroundRemoval */,
 				9F55F7672B22547000CCA44F /* Kingfisher */,
 				9FC3BECB2B24E24100993FD3 /* FirebaseFunctions */,
 				9FEEF37C2B2F925A005CC79D /* Lottie */,
 				9FF5C26C2B31E4230014A216 /* FirebaseStorage */,
+				5FA5C5442C4A8F0100ABB5B3 /* FirebaseFirestore */,
 			);
 			productName = StickerStudioAISwiftUITest;
 			productReference = 23A6317B2B1F9BEB00BDF56E /* StickerStudioAISwiftUITest.app */;
@@ -695,6 +695,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5FA5C5442C4A8F0100ABB5B3 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F55F74F2B2253C700CCA44F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
 		9F55F7502B2253C700CCA44F /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9F55F74F2B2253C700CCA44F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -729,11 +734,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9F55F75D2B22541F00CCA44F /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
-		};
-		9F55F7612B22543D00CCA44F /* BackgroundRemoval */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9F55F7602B22543D00CCA44F /* XCRemoteSwiftPackageReference "BackgroundRemoval" */;
-			productName = BackgroundRemoval;
 		};
 		9F55F7672B22547000CCA44F /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseStorage
+import FirebaseFirestore
 
 final class AccountViewModel: ObservableObject {
     @Published var stickerModels = [AccountStickerModel]()
@@ -15,11 +16,16 @@ final class AccountViewModel: ObservableObject {
 
     init() {
         getImages()
+        subscribeToUserChanges()
+    }
+    
+    deinit {
+        removeSubscribtion()
     }
 
     private func getImages() {
         Task {
-            storage.reference().child("stickers/\(uid ?? "error")/").listAll(completion: { [weak self, weak storage] result, error in
+            storage.reference().child("users/\(uid ?? "")/createdStickers/").listAll(completion: { [weak self, weak storage] result, error in
                 guard let self else { return }
 
                 result?.items.forEach {
@@ -33,5 +39,32 @@ final class AccountViewModel: ObservableObject {
                 }
             })
         }
+    }
+    
+    private let db = Firestore.firestore()
+    private var listener: ListenerRegistration?
+    
+    private func subscribeToUserChanges() {
+//        listener = db.collection("users").document(uid ?? "")
+//          .addSnapshotListener { documentSnapshot, error in
+//            guard let document = documentSnapshot else {
+//              print("Error fetching document: \(error!)")
+//              return
+//            }
+//            guard let data = document.data() else {
+//              print("Document data was empty.")
+//              return
+//            }
+//            print("Current data: \(data)")
+//          }  
+        
+//        listener = db.collection("users").document(uid ?? "").addSnapshotListener({ snapshot, error in
+//            print(snapshot)
+//            print(error)
+//        })
+    }
+    
+    private func removeSubscribtion() {
+//        listener?.remove()
     }
 }

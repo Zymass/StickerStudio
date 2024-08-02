@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Combine
-import BackgroundRemoval
 import Kingfisher
 import FirebaseStorage
 
@@ -96,7 +95,7 @@ final class CreateStickerViewModel: NSObject, ObservableObject {
 
             switch result {
             case .success(let response):
-                guard let imageWithoutBackground = try? BackgroundRemoval.init().removeBackground(image: response.image) else { return }
+                let imageWithoutBackground = response.image
 
                 isLoading = false
                 currentSticker = imageWithoutBackground

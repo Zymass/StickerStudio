@@ -7,20 +7,25 @@
  * See a full list of supported triggers at https://firebase.google.com/docs/functions
  */
 
-const functions = require("firebase-functions");
+const path = require("path");
+const fs = require("fs");
+const functions = require("firebase-functions/v2");
 const axios = require("axios");
 const admin = require("firebase-admin");
 const serviceAccount = require("./cred.json");
 const {onCall, HttpsError} = require("firebase-functions/v2/https");
-const {setGlobalOptions, logger} = require("firebase-functions/v2");
+const {setGlobalOptions} = require("firebase-functions/v2");
 setGlobalOptions({maxInstances: 10});
 const serviceKey = (
   "OvypnElGk8xfI9Zo7k2SBHXowjXPG93FlgsHn9tkSDR8e2wqAkHbVFpNdy49"
 );
-
+const {pipeline} = require("stream");
+const {promisify} = require("util");
+const pipelineAsync = promisify(pipeline);
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://stickerstudioai-e0262-default-rtdb.europe-west1.firebasedatabase.app",
+  databaseURL: "https://stickerstudio-737c4-default-rtdb.firebaseio.com/",
+  storageBucket: "gs://stickerstudio-737c4.appspot.com",
 });
 
 // Main database reference
@@ -81,112 +86,118 @@ exports.get_user_info = onCall(async (req) => {
 
 
 // генерация картинки
-exports.create_sticker = onCall(async (req) => {
+exports.create_sticker = functions.https.onCall({
+  timeoutSeconds: 120,
+  memory: "1GiB",
+}, async (req) => {
   if (!req.auth) {
-    throw new HttpsError(
-        "unauthenticated", "Требуется аутентификация.",
+    throw new functions.https.HttpsError(
+        "unauthenticated",
+        "Требуется аутентификация.",
     );
   }
+
   const trackId = req.auth.uid + Date.now() / 1000;
   const requestData = {
-    "key": serviceKey,
-    "model_id": "anything-v4",
-    "prompt": req.data.prompt,
-    "negative_prompt": "",
-    "width": 512,
-    "height": 512,
-    "samples": 1,
-    "num_inference_steps": "21",
-    "safety_checker": "yes",
-    "enhance_prompt": "no",
-    "seed": null,
-    "guidance_scale": 7.5,
-    "multi_lingual": "no",
-    "panorama": "no",
-    "self_attention": "yes",
-    "upscale": "1",
-    "embeddings_model": null,
-    "lora_model": "stickermodel",
-    "tomesd": "yes",
-    "clip_skip": "2",
-    "use_karras_sigmas": "yes",
-    "vae": null,
-    "lora_strength": "0.5",
-    "scheduler": "UniPCMultistepScheduler",
-    "webhook": "https://us-central1-stickerstudio-737c4.cloudfunctions.net/onEndCreation?userId=" + req.auth.uid + "&id=" + trackId,
-    "track_id": trackId,
+    key: serviceKey,
+    model_id: "anything-v4",
+    prompt: req.data.prompt,
+    negative_prompt: "",
+    width: 512,
+    height: 512,
+    samples: 1,
+    scheduler: "UniPCMultistepScheduler",
+    webhook: `https://onendcreation-6aypxuipjq-uc.a.run.app?userId=${req.auth.uid}&id=${trackId}`,
+    track_id: trackId,
   };
 
-  const apiUrl = "https://stablediffusionapi.com/api/v4/dreambooth";
+  const apiUrl = "https://modelslab.com/api/v6/realtime/text2img";
 
   const headers = {
     "Content-Type": "application/json",
   };
 
-  const response = await axios.post(apiUrl, requestData, headers);
+  try {
+    const response = await axios.post(apiUrl, requestData, {headers});
 
-  const responseData = response.data;
-
-  return {result: "Success", responseData};
+    if (response.data.future_links && response.data.future_links.length > 0) {
+      await admin.firestore().collection("createdStickers").doc(trackId).set({
+        imageUrl: response.data.future_links,
+      });
+    } else {
+      throw new functions.https.HttpsError(
+          "Error",
+          "future_links is empty",
+      );
+    }
+  } catch (error) {
+    return {result: "Error", error: error.message};
+  }
 });
 
 
-// получение картинки
-exports.fetch_image = onCall(async (req) => {
-  if (!req.auth) {
-    throw new HttpsError(
-        "unauthenticated", "Требуется аутентификация.",
+// Webhook
+exports.onEndCreation = functions.https.onRequest(async (request, response) => {
+  try {
+    const uid = request.query.userId;
+    const id = request.query.id;
+
+    if (!uid || !id) {
+      throw new functions.https.HttpsError(
+          "Error",
+          "uid or ud is empty",
+      );
+    }
+
+    const doc = await admin.firestore()
+        .collection("createdStickers").doc(id).get();
+
+    if (!doc.exists) {
+      throw new functions.https.HttpsError("not-found", "Документ не найден");
+    }
+
+    const imageUrl = doc.get("imageUrl");
+
+    if (!imageUrl) {
+      throw new functions.https.HttpsError(
+          "Error",
+          "imageUrl is empty",
+      );
+    }
+
+    // Download and resize image (if needed)
+    const tempFilePath = path.join("/tmp", `${id}.jpg`);
+    const imageResponse = await axios({
+      url: imageUrl,
+      responseType: "stream",
+    });
+    const fileStream = fs.createWriteStream(tempFilePath);
+    await pipelineAsync(imageResponse.data, fileStream);
+    // Resize if needed
+    // await sharp(tempFilePath).resize(width, height).toFile(tempFilePath);
+
+    // Upload to Firebase Storage
+    const bucket = admin.storage().bucket();
+    const destination = `users/${uid}/createdStickers/${id}.jpg`;
+    await bucket.upload(tempFilePath, {destination});
+
+    // Delete temp file
+    fs.unlinkSync(tempFilePath);
+
+    // Batch updates
+    const batch = admin.firestore().batch();
+    batch.update(admin.firestore().collection("users").doc(uid), {
+      stickers: admin.firestore.FieldValue.arrayUnion(id),
+    });
+    // Potentially add updates to other collections if needed
+    await batch.commit();
+
+    return response.send({result: "Success"});
+  } catch (error) {
+    console.error(error);
+    throw new functions.https.HttpsError(
+        "Error",
+        error,
     );
   }
-
-  const apiUrl = "https://stablediffusionapi.com/api/v4/dreambooth/fetch?"+
-  "key=" + serviceKey +
-  "&request_id=" + req.data.image_id;
-
-  const response = await axios.post(apiUrl);
-
-  const responseData = response.data;
-
-  return {result: "Success", responseData};
-});
-
-
-// обновить данные пользователя
-exports.update_user = onCall(async (req) => {
-  if (!req.auth) {
-    throw new HttpsError(
-        "unauthenticated", "Требуется аутентификация.",
-    );
-  }
-
-  const auth = req.auth.uid;
-  const doc = await db.collection("users").doc(auth).get();
-
-  if (doc.exists) {
-    const currentStickers = doc.data().stickers;
-    currentStickers.push(req.data.sticker);
-    logger.info(currentStickers);
-
-    const data = {
-      stickers: currentStickers,
-    };
-    await db.collection("users").doc(auth).set(data, {merge: true});
-
-    return {result: "Success"};
-  } else {
-    return {result: "User not found"};
-  }
-});
-
-exports.onEndCreation = functions.https.onRequest((request, response) => {
-  const userId = request.query.userId;
-  const id = request.query.id;
-
-  // if (!userId || !id) {
-  //   response.status(400).send('Missing parameters userId or id');
-  //   return;
-  // }
-
-  console.log(`Received userId: ${userId}, id: ${id}`);
-  response.send(`Hello from Firebase! Received userId: ${userId}, id: ${id}`);
 });
