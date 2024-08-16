@@ -9,6 +9,8 @@ import SwiftUI
 import Combine
 import Kingfisher
 import FirebaseStorage
+import FirebaseFirestore
+import BackgroundRemoval
 
 enum CreateStickerViewEvents {
     case tapMainButton
@@ -21,8 +23,14 @@ final class CreateStickerViewModel: NSObject, ObservableObject {
     @Published var textToImage: Image = Image(.defaultSticker)
     @Published var isLoading: Bool = false
     @Published var isTelegramButtinHidden: Bool = true
+    @Published var showAlert: Bool = false
     @AppStorage("uid") private var uid: String?
     private var currentSticker: UIImage?
+    private let db = Firestore.firestore()
+    private var listener: ListenerRegistration?
+    private lazy var storage = Storage.storage()
+    private lazy var backgroundRemoval = BackgroundRemoval()
+    private var currentStickerId: String?
 
     let events = PassthroughSubject<CreateStickerViewEvents, Never>()
     private lazy var networkManager = NetworkManager()
@@ -61,49 +69,11 @@ final class CreateStickerViewModel: NSObject, ObservableObject {
         isLoading = true
         isTelegramButtinHidden = true
 
-        networkManager.createSticker(prompt: prompt + "Sticker, contour, Vector, White Background, cartoon style, sticker 2d, diecut sticker –v 4 –upbeta –q 2 –v 5 –s 750, no outline") { [weak self] response in
+        networkManager.createSticker(prompt: prompt + "Sticker, contour, Vector, White Background, cartoon style, sticker 2d, diecut sticker –v 4 –upbeta –q 2 –v 5 –s 750, no outline") { [weak self] result in
             guard let self else { return }
 
-            if let imageUrl = response?.responseData?.output?.first {
-                removeBackground(imageUrl: imageUrl)
-            } else {
-                fetchImage(id: response?.responseData?.id ?? 0)
-            }
-        }
-    }
-
-    private func fetchImage(id: Int) {
-        networkManager.fetchImage(id: id) { [weak self] response in
-            guard let self else { return }
-
-            if let imageUrl = response?.responseData?.output?.first {
-                removeBackground(imageUrl: imageUrl)
-            } else {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                    self.fetchImage(id: id)
-                    print("fetch")
-                }
-            }
-        }
-    }
-
-    private func removeBackground(imageUrl: String) {
-        guard let url = URL(string: imageUrl) else { return }
-
-        KingfisherManager.shared.retrieveImage(with: url) { [weak self] result in
-            guard let self else { return }
-
-            switch result {
-            case .success(let response):
-                let imageWithoutBackground = response.image
-
-                isLoading = false
-                currentSticker = imageWithoutBackground
-                textToImage = Image(uiImage: imageWithoutBackground)
-                isTelegramButtinHidden = false
-                uploadImageToCloudStorage()
-            case .failure(let error):
-                print(error.localizedDescription)
+            if result == true {
+                subscribeToUserChanges()
             }
         }
     }
@@ -133,52 +103,54 @@ final class CreateStickerViewModel: NSObject, ObservableObject {
     }
 
     @objc func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
-        print("Did finish saving")
+        showAlert = true
     }
+    
+    private func subscribeToUserChanges() {
+        guard listener == nil else { return }
+        
+        listener = db.collection("users").document(uid ?? "").addSnapshotListener(includeMetadataChanges: true) { [weak self] snapshot, error in
+            guard
+                let self,
+                let snapshot,
+                !snapshot.metadata.isFromCache,
+                let data = snapshot.data(),
+                let stickers = data["stickers"] as? [String],
+                let stickerId = stickers.last else {
+                return
+            }
 
-    private func uploadImageToCloudStorage() {
-        let storage = Storage.storage()
-
-        // Create a root reference
-        let storageRef = storage.reference()
-
-        guard let data = currentSticker?.pngData() else { return }
-
-        // Create a reference to the file you want to upload
-        let path = "stickers/\(uid ?? "error")/\(randomNonceString(length: 32))"
-        let riversRef = storageRef.child(path)
-
-        // Upload the file to the path
-        _ = riversRef.putData(data, metadata: nil) { [weak self] (metadata, error) in
+            guard stickerId != currentStickerId else { return }
+            
+            currentStickerId = stickerId
+            getSticker(stickerId: stickerId)
+            print("🚺\(stickers)")
+        }
+    }
+    
+    private func removeSubscribtion() {
+        listener?.remove()
+        listener = nil
+    }
+    
+    private func getSticker(stickerId: String) {
+        storage.reference().child("users/\(uid ?? "")/createdStickers/\(stickerId).jpg").getData(maxSize: 1024 * 1024) { [weak self] data, error in
             guard let self else { return }
-
-            if metadata != nil {
-                networkManager.updateUser(sticker: path) { result in
-                    print("Update user success: \(result)")
+            
+            if let data, let image = UIImage(data: data) {
+                do {
+                    let imageWithoutBackground = try backgroundRemoval.removeBackground(image: image)
+                    self.textToImage = Image(uiImage: imageWithoutBackground)
+                    self.currentSticker = imageWithoutBackground
+                    self.isLoading = false
+                } catch {
+                    print(error.localizedDescription)
                 }
             } else {
                 print(error?.localizedDescription ?? "")
             }
+            
+            removeSubscribtion()
         }
-    }
-
-    private func randomNonceString(length: Int = 32) -> String {
-        precondition(length > 0)
-        var randomBytes = [UInt8](repeating: 0, count: length)
-        let errorCode = SecRandomCopyBytes(kSecRandomDefault, randomBytes.count, &randomBytes)
-        if errorCode != errSecSuccess {
-            fatalError(
-                "Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)"
-            )
-        }
-
-        let charset: [Character] =
-        Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
-
-        let nonce = randomBytes.map { byte in
-            charset[Int(byte) % charset.count]
-        }
-
-        return String(nonce)
     }
 }

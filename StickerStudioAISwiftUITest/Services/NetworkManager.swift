@@ -11,7 +11,7 @@ import FirebaseFunctions
 
 protocol NetworkManagerProtocol {
     func getUserProfile(completion: @escaping (GetUserResponse?) -> ())
-    func createSticker(prompt: String, completion: @escaping (GenerateImageResponse?) -> ())
+    func createSticker(prompt: String, completion: @escaping (Bool?) -> ())
     func fetchImage(id: Int, completion: @escaping (FetchImageResponse?) -> ())
     func updateUser(sticker: String, completion: @escaping (Bool) -> ())
 }
@@ -39,7 +39,7 @@ final class NetworkManager: NetworkManagerProtocol {
         }
     }
 
-    func createSticker(prompt: String, completion: @escaping (GenerateImageResponse?) -> ()) {
+    func createSticker(prompt: String, completion: @escaping (Bool?) -> ()) {
 
         let data: [String: Any] = [
             "prompt": prompt
@@ -48,20 +48,25 @@ final class NetworkManager: NetworkManagerProtocol {
         functions.httpsCallable("create_sticker").call(data) { [weak self] result, error in
             guard let self else { return }
 
-            if let anyData = result?.data, let data = try? JSONSerialization.data(withJSONObject: anyData, options: []) {
-                print("")
-                do {
-                    let response = try self.decoder.decode(
-                        GenerateImageResponse.self,
-                        from: data
-                    )
-                    completion(response)
-                } catch {
-                    completion(nil)
-                }
+            if let error {
+                completion(false)
             } else {
-                print(error?.localizedDescription ?? "")
+                completion(true)
             }
+//            if let anyData = result?.data, let data = try? JSONSerialization.data(withJSONObject: anyData, options: []) {
+//                print("")
+//                do {
+//                    let response = try self.decoder.decode(
+//                        GenerateImageResponse.self,
+//                        from: data
+//                    )
+//                    completion(response)
+//                } catch {
+//                    completion(nil)
+//                }
+//            } else {
+//                print(error?.localizedDescription ?? "")
+//            }
         }
     }
 

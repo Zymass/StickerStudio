@@ -17,6 +17,13 @@ struct CreateStickerView: View {
             VStack {
                 GeneratedStickerView(viewModel: viewModel)
                     .opacity(generateViewOpacity)
+                    .alert(isPresented: $viewModel.showAlert) {
+                        Alert(
+                            title: Text("Information"),
+                            message: Text("Sticker saved successfully"),
+                            dismissButton: .default(Text("OK"))
+                        )
+                    }
                 Button {
                     viewModel.events.send(.exportToTelegram)
                 } label: {

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		23A631832B1F9BEC00BDF56E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23A631822B1F9BEC00BDF56E /* Assets.xcassets */; };
 		23A631862B1F9BEC00BDF56E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23A631852B1F9BEC00BDF56E /* Preview Assets.xcassets */; };
+		5F0B73602C60D0F30006E1B1 /* BackgroundRemoval in Frameworks */ = {isa = PBXBuildFile; productRef = 5F0B735F2C60D0F30006E1B1 /* BackgroundRemoval */; };
 		5FA5C5452C4A8F0100ABB5B3 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 5FA5C5442C4A8F0100ABB5B3 /* FirebaseFirestore */; };
 		5FCA8D8C2C3DCE0A00CADFE9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5FCA8D8B2C3DCE0A00CADFE9 /* GoogleService-Info.plist */; };
 		9F2681BB2B2F609000010838 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2681BA2B2F609000010838 /* AccountView.swift */; };
@@ -118,6 +119,7 @@
 				5FA5C5452C4A8F0100ABB5B3 /* FirebaseFirestore in Frameworks */,
 				9F55F7532B2253C700CCA44F /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 				9F55F7592B2253C700CCA44F /* FirebaseAppCheck in Frameworks */,
+				5F0B73602C60D0F30006E1B1 /* BackgroundRemoval in Frameworks */,
 				9FF5C26D2B31E4230014A216 /* FirebaseStorage in Frameworks */,
 				9F55F7572B2253C700CCA44F /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				9FC3BECC2B24E24100993FD3 /* FirebaseFunctions in Frameworks */,
@@ -341,6 +343,7 @@
 				9FEEF37C2B2F925A005CC79D /* Lottie */,
 				9FF5C26C2B31E4230014A216 /* FirebaseStorage */,
 				5FA5C5442C4A8F0100ABB5B3 /* FirebaseFirestore */,
+				5F0B735F2C60D0F30006E1B1 /* BackgroundRemoval */,
 			);
 			productName = StickerStudioAISwiftUITest;
 			productReference = 23A6317B2B1F9BEB00BDF56E /* StickerStudioAISwiftUITest.app */;
@@ -695,6 +698,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5F0B735F2C60D0F30006E1B1 /* BackgroundRemoval */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F55F7602B22543D00CCA44F /* XCRemoteSwiftPackageReference "BackgroundRemoval" */;
+			productName = BackgroundRemoval;
+		};
 		5FA5C5442C4A8F0100ABB5B3 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9F55F74F2B2253C700CCA44F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

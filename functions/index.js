@@ -106,12 +106,27 @@ exports.create_sticker = functions.https.onCall({
     width: 512,
     height: 512,
     samples: 1,
+    num_inference_steps: "31",
+    safety_checker: "yes",
+    enhance_prompt: "yes",
+    seed: null,
+    guidance_scale: 7.5,
+    panorama: "no",
+    self_attention: "no",
+    upscale: "no",
+    embeddings_model: null,
+    lora_model: null,
+    tomesd: "yes",
+    clip_skip: "2",
+    use_karras_sigmas: "yes",
+    vae: null,
+    lora_strength: null,
     scheduler: "UniPCMultistepScheduler",
     webhook: `https://onendcreation-6aypxuipjq-uc.a.run.app?userId=${req.auth.uid}&id=${trackId}`,
     track_id: trackId,
   };
 
-  const apiUrl = "https://modelslab.com/api/v6/realtime/text2img";
+  const apiUrl = "https://modelslab.com/api/v6/images/text2img";
 
   const headers = {
     "Content-Type": "application/json",
@@ -119,16 +134,18 @@ exports.create_sticker = functions.https.onCall({
 
   try {
     const response = await axios.post(apiUrl, requestData, {headers});
+    console.warn(`✅Response:`, response);
 
-    if (response.data.future_links && response.data.future_links.length > 0) {
+    if (response.data.status == "success") {
       await admin.firestore().collection("createdStickers").doc(trackId).set({
-        imageUrl: response.data.future_links,
+        imageUrl: response.data.output[0],
       });
+      return {result: trackId};
     } else {
-      throw new functions.https.HttpsError(
-          "Error",
-          "future_links is empty",
-      );
+      await admin.firestore().collection("createdStickers").doc(trackId).set({
+        imageUrl: response.data.future_links[0],
+      });
+      return {result: trackId};
     }
   } catch (error) {
     return {result: "Error", error: error.message};
@@ -182,7 +199,11 @@ exports.onEndCreation = functions.https.onRequest(async (request, response) => {
     await bucket.upload(tempFilePath, {destination});
 
     // Delete temp file
-    fs.unlinkSync(tempFilePath);
+    // if (fs.existsSync(tempFilePath)) {
+    //   fs.unlinkSync(tempFilePath);
+    // } else {
+    //   console.warn(`Файл ${tempFilePath} не найден для удаления.`);
+    // }
 
     // Batch updates
     const batch = admin.firestore().batch();
